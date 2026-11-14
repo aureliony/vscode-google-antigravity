@@ -1,0 +1,718 @@
+{
+	"name": "google-antigravity",
+	"displayName": "Google Antigravity",
+	"description": "Bring Google's agent-first development platform to Visual Studio Code.",
+	"icon": "img/logo.png",
+	"version": "1.12.0",
+	"publisher": "google",
+	"license": "SEE LICENSE IN LICENSE.txt",
+	"engines": {
+		"vscode": "^1.80.0"
+	},
+	"main": "./extension.js",
+	"categories": [
+		"AI",
+		"Chat",
+		"Programming Languages",
+		"Machine Learning"
+	],
+	"keywords": [
+		"AI",
+		"Agent",
+		"Antigravity",
+		"Gemini",
+		"Coding Assistant",
+		"Autonomous Agent",
+		"MCP",
+		"Model Context Protocol",
+		"Google Cloud",
+		"AGY"
+	],
+	"activationEvents": [
+		"onStartupFinished",
+		"onCustomEditor:antigravity.artifactEditor"
+	],
+	"contributes": {
+		"customEditors": [
+			{
+				"viewType": "antigravity.artifactEditor",
+				"displayName": "Antigravity Artifact Viewer",
+				"selector": [
+					{
+						"filenamePattern": "antigravity:/**/*.md"
+					},
+					{
+						"filenamePattern": "**/.gemini/*/brain/**/*.md"
+					}
+				],
+				"priority": "default"
+			},
+			{
+				"viewType": "jetski.settingsEditor",
+				"displayName": "Antigravity Settings Viewer",
+				"selector": [
+					{
+						"filenamePattern": "jetski-settings://**"
+					}
+				],
+				"priority": "default"
+			}
+		],
+		"views": {
+			"antigravity-sidebar": [
+				{
+					"type": "webview",
+					"id": "antigravity.panel",
+					"name": "Antigravity",
+					"icon": "img/logo.svg"
+				}
+			]
+		},
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "antigravity-sidebar",
+					"title": "Antigravity",
+					"icon": "img/logo.svg"
+				}
+			]
+		},
+		"commands": [
+			{
+				"command": "antigravity.showThirdPartyNotices",
+				"title": "Show Third Party Notices",
+				"category": "Antigravity"
+			},
+			{
+				"command": "antigravity.openChangelog",
+				"title": "Open Changelog",
+				"category": "Antigravity"
+			},
+			{
+				"command": "antigravity.resetConversationState",
+				"title": "Reset Conversation State",
+				"category": "Antigravity"
+			},
+			{
+				"command": "antigravity.insertSnippet",
+				"title": "Add Selection to Chat",
+				"icon": "$(comment)",
+				"category": "Antigravity"
+			},
+			{
+				"command": "antigravity.insertTerminalSnippet",
+				"title": "Add Terminal Selection or Output to Chat",
+				"icon": "$(terminal)",
+				"category": "Antigravity"
+			},
+			{
+				"command": "antigravity.insertTerminalOutput",
+				"title": "Add Terminal Selection or Output to Chat",
+				"icon": "$(terminal)",
+				"category": "Antigravity"
+			},
+			{
+				"command": "antigravity.startNewConversation",
+				"title": "New Conversation",
+				"icon": "$(add)",
+				"category": "Antigravity"
+			},
+			{
+				"command": "antigravity.toggleChatFocus",
+				"title": "Toggle Chat Focus",
+				"category": "Antigravity"
+			},
+			{
+				"command": "antigravity.panel.focus",
+				"title": "Focus Panel",
+				"category": "Antigravity"
+			},
+			{
+				"command": "antigravity.acceptAllChanges",
+				"title": "Accept Changes in All Files",
+				"icon": "$(check-all)",
+				"category": "Antigravity"
+			},
+			{
+				"command": "antigravity.rejectAllChanges",
+				"title": "Reject Changes in All Files",
+				"icon": "$(close-all)",
+				"category": "Antigravity"
+			},
+			{
+				"command": "antigravity.inlineDiff.acceptAll",
+				"title": "Accept Changes in Current File",
+				"icon": "$(check)",
+				"category": "Antigravity"
+			},
+			{
+				"command": "antigravity.inlineDiff.rejectAll",
+				"title": "Reject Changes in Current File",
+				"icon": "$(close)",
+				"category": "Antigravity"
+			},
+			{
+				"command": "antigravity.inlineDiff.acceptFocusedHunk",
+				"title": "Accept Focused Change",
+				"category": "Antigravity"
+			},
+			{
+				"command": "antigravity.inlineDiff.rejectFocusedHunk",
+				"title": "Reject Focused Change",
+				"category": "Antigravity"
+			},
+			{
+				"command": "antigravity.sideBySide.acceptAll",
+				"title": "Accept Changes in Current File",
+				"icon": "$(check)",
+				"category": "Antigravity"
+			},
+			{
+				"command": "antigravity.sideBySide.rejectAll",
+				"title": "Reject Changes in Current File",
+				"icon": "$(close)",
+				"category": "Antigravity"
+			},
+			{
+				"command": "antigravity.toggleInlineDiff",
+				"title": "Toggle Inline Diff",
+				"icon": "$(diff)",
+				"category": "Antigravity"
+			},
+			{
+				"command": "antigravity.openSettings",
+				"title": "Open Settings",
+				"icon": "$(gear)",
+				"category": "Antigravity"
+			},
+			{
+				"command": "antigravity.signIn",
+				"title": "Sign In",
+				"icon": "$(sign-in)",
+				"category": "Antigravity"
+			},
+			{
+				"command": "antigravity.signOut",
+				"title": "Sign Out",
+				"icon": "$(sign-out)",
+				"category": "Antigravity"
+			},
+			{
+				"command": "antigravity.statusMenu",
+				"title": "Show Menu",
+				"icon": "$(ellipsis)",
+				"category": "Antigravity"
+			},
+			{
+				"command": "antigravity.openTelemetrySettings",
+				"title": "Manage Data Sharing & Telemetry",
+				"icon": "$(shield)",
+				"category": "Antigravity"
+			},
+			{
+				"command": "antigravity.feedback",
+				"title": "Provide Feedback",
+				"icon": "$(feedback)",
+				"category": "Antigravity"
+			},
+			{
+				"command": "antigravity.createComment",
+				"title": "Add Comment to Chat",
+				"category": "Antigravity"
+			},
+			{
+				"command": "antigravity.editComment",
+				"title": "Edit Comment",
+				"category": "Antigravity",
+				"icon": "$(edit)"
+			},
+			{
+				"command": "antigravity.deleteComment",
+				"title": "Delete Comment",
+				"category": "Antigravity",
+				"icon": "$(trash)"
+			},
+			{
+				"command": "antigravity.saveComment",
+				"title": "Save Comment",
+				"category": "Antigravity"
+			},
+			{
+				"command": "antigravity.cancelComment",
+				"title": "Cancel Edit",
+				"category": "Antigravity"
+			},
+			{
+				"command": "antigravity.commentForSelection",
+				"title": "Comment for Antigravity",
+				"category": "Antigravity"
+			},
+			{
+				"command": "antigravity.dynamic.conversationView.findInConversation",
+				"title": "Find in Conversation",
+				"category": "Antigravity"
+			}
+		],
+		"submenus": [
+			{
+				"id": "antigravity.editorContextSubmenu",
+				"label": "Antigravity"
+			},
+			{
+				"id": "antigravity.panelMoreSubmenu",
+				"label": "More Actions...",
+				"icon": "$(ellipsis)"
+			}
+		],
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "antigravity.acceptAllChanges",
+					"when": "antigravity.hasPendingChanges"
+				},
+				{
+					"command": "antigravity.rejectAllChanges",
+					"when": "antigravity.hasPendingChanges"
+				},
+				{
+					"command": "antigravity.inlineDiff.acceptAll",
+					"when": "editorIsOpen && antigravity.hasActiveDiff"
+				},
+				{
+					"command": "antigravity.inlineDiff.rejectAll",
+					"when": "editorIsOpen && antigravity.hasActiveDiff"
+				},
+				{
+					"command": "antigravity.inlineDiff.acceptFocusedHunk",
+					"when": "editorIsOpen && antigravity.canAcceptFocusedChange"
+				},
+				{
+					"command": "antigravity.inlineDiff.rejectFocusedHunk",
+					"when": "editorIsOpen && antigravity.canAcceptFocusedChange"
+				},
+				{
+					"command": "antigravity.sideBySide.acceptAll",
+					"when": "antigravity.sideBySideReviewPending"
+				},
+				{
+					"command": "antigravity.sideBySide.rejectAll",
+					"when": "antigravity.sideBySideReviewPending"
+				},
+				{
+					"command": "antigravity.signIn",
+					"when": "antigravity.authStatusKnown && !antigravity.signedIn"
+				},
+				{
+					"command": "antigravity.signOut",
+					"when": "antigravity.signedIn"
+				},
+				{
+					"command": "antigravity.feedback",
+					"when": "!antigravity.isEnterprise"
+				},
+				{
+					"command": "antigravity.toggleChatFocus",
+					"when": "false"
+				},
+				{
+					"command": "antigravity.createComment",
+					"when": "false"
+				},
+				{
+					"command": "antigravity.editComment",
+					"when": "false"
+				},
+				{
+					"command": "antigravity.deleteComment",
+					"when": "false"
+				},
+				{
+					"command": "antigravity.saveComment",
+					"when": "false"
+				},
+				{
+					"command": "antigravity.cancelComment",
+					"when": "false"
+				},
+				{
+					"command": "antigravity.commentForSelection",
+					"when": "editorHasSelection && config.antigravity.enableComments"
+				},
+				{
+					"command": "antigravity.insertTerminalOutput",
+					"when": "false"
+				}
+			],
+			"editor/context": [
+				{
+					"submenu": "antigravity.editorContextSubmenu",
+					"group": "antigravity@0",
+					"when": "editorTextFocus"
+				}
+			],
+			"antigravity.editorContextSubmenu": [
+				{
+					"command": "antigravity.insertSnippet",
+					"group": "1_chat@1",
+					"when": "editorHasSelection"
+				},
+				{
+					"command": "antigravity.commentForSelection",
+					"group": "1_chat@2",
+					"when": "editorHasSelection && config.antigravity.enableComments"
+				},
+				{
+					"command": "antigravity.inlineDiff.acceptFocusedHunk",
+					"group": "2_review@1",
+					"when": "antigravity.canAcceptFocusedChange"
+				},
+				{
+					"command": "antigravity.inlineDiff.rejectFocusedHunk",
+					"group": "2_review@2",
+					"when": "antigravity.canAcceptFocusedChange"
+				},
+				{
+					"command": "antigravity.inlineDiff.acceptAll",
+					"group": "2_review@3",
+					"when": "antigravity.hasActiveDiff"
+				},
+				{
+					"command": "antigravity.inlineDiff.rejectAll",
+					"group": "2_review@4",
+					"when": "antigravity.hasActiveDiff"
+				},
+				{
+					"command": "antigravity.panel.focus",
+					"group": "3_panel@1"
+				}
+			],
+			"view/title": [
+				{
+					"command": "antigravity.startNewConversation",
+					"group": "navigation@1",
+					"when": "view == antigravity.panel"
+				},
+				{
+					"command": "antigravity.feedback",
+					"group": "navigation@2",
+					"when": "view == antigravity.panel && !antigravity.isEnterprise"
+				},
+				{
+					"submenu": "antigravity.panelMoreSubmenu",
+					"group": "navigation@9",
+					"when": "view == antigravity.panel"
+				}
+			],
+			"antigravity.panelMoreSubmenu": [
+				{
+					"command": "antigravity.openSettings",
+					"group": "1_settings@1"
+				},
+				{
+					"command": "antigravity.openTelemetrySettings",
+					"group": "1_settings@2"
+				},
+				{
+					"command": "antigravity.toggleInlineDiff",
+					"group": "1_settings@3"
+				},
+				{
+					"command": "antigravity.openChangelog",
+					"group": "2_help@1"
+				},
+				{
+					"command": "antigravity.showThirdPartyNotices",
+					"group": "2_help@2"
+				},
+				{
+					"command": "antigravity.resetConversationState",
+					"group": "2_help@3"
+				},
+				{
+					"command": "antigravity.signIn",
+					"group": "3_account@1",
+					"when": "antigravity.authStatusKnown && !antigravity.signedIn"
+				},
+				{
+					"command": "antigravity.signOut",
+					"group": "3_account@1",
+					"when": "antigravity.signedIn"
+				}
+			],
+			"terminal/context": [
+				{
+					"command": "antigravity.insertTerminalSnippet",
+					"group": "antigravity",
+					"when": "terminalTextSelected"
+				},
+				{
+					"command": "antigravity.insertTerminalOutput",
+					"group": "antigravity",
+					"when": "!terminalTextSelected"
+				}
+			],
+			"editor/title": [
+				{
+					"command": "antigravity.inlineDiff.acceptAll",
+					"group": "navigation",
+					"when": "resourceScheme == file && antigravity.hasActiveDiff"
+				},
+				{
+					"command": "antigravity.inlineDiff.rejectAll",
+					"group": "navigation",
+					"when": "resourceScheme == file && antigravity.hasActiveDiff"
+				},
+				{
+					"command": "antigravity.sideBySide.acceptAll",
+					"group": "navigation",
+					"when": "antigravity.sideBySideReviewPending"
+				},
+				{
+					"command": "antigravity.sideBySide.rejectAll",
+					"group": "navigation",
+					"when": "antigravity.sideBySideReviewPending"
+				}
+			],
+			"comments/commentThread/context": [
+				{
+					"command": "antigravity.createComment",
+					"group": "inline@1",
+					"when": "commentController == antigravity-comments"
+				}
+			],
+			"comments/comment/title": [
+				{
+					"command": "antigravity.editComment",
+					"when": "commentController == antigravity-comments && comment == antigravity-draft",
+					"group": "inline@1"
+				},
+				{
+					"command": "antigravity.deleteComment",
+					"when": "commentController == antigravity-comments && comment == antigravity-draft",
+					"group": "inline@2"
+				}
+			],
+			"comments/comment/context": [
+				{
+					"command": "antigravity.saveComment",
+					"when": "commentController == antigravity-comments",
+					"group": "navigation@1"
+				},
+				{
+					"command": "antigravity.cancelComment",
+					"when": "commentController == antigravity-comments",
+					"group": "navigation@2"
+				}
+			]
+		},
+		"keybindings": [
+			{
+				"command": "antigravity.insertSnippet",
+				"key": "ctrl+l",
+				"mac": "cmd+l",
+				"when": "editorTextFocus"
+			},
+			{
+				"command": "antigravity.insertTerminalSnippet",
+				"key": "ctrl+l",
+				"mac": "cmd+l",
+				"when": "terminalFocus && terminalTextSelected"
+			},
+			{
+				"command": "antigravity.insertTerminalSnippet",
+				"key": "ctrl+alt+l",
+				"when": "terminalFocus && terminalTextSelected && !isMac"
+			},
+			{
+				"command": "antigravity.insertTerminalOutput",
+				"key": "ctrl+alt+l",
+				"mac": "cmd+l",
+				"when": "terminalFocus && !terminalTextSelected"
+			},
+			{
+				"command": "antigravity.toggleChatFocus",
+				"key": "ctrl+l",
+				"mac": "cmd+l",
+				"when": "!editorTextFocus && !terminalFocus && !antigravity.chatFocused",
+				"args": "focus"
+			},
+			{
+				"command": "antigravity.toggleChatFocus",
+				"key": "ctrl+l",
+				"mac": "cmd+l",
+				"when": "antigravity.chatFocused && !editorTextFocus && !terminalFocus",
+				"args": "close"
+			},
+			{
+				"command": "antigravity.startNewConversation",
+				"key": "ctrl+shift+l",
+				"mac": "cmd+shift+l"
+			},
+			{
+				"command": "antigravity.commentForSelection",
+				"key": "ctrl+alt+m",
+				"mac": "cmd+alt+m",
+				"when": "editorHasSelection && config.antigravity.enableComments"
+			},
+			{
+				"command": "antigravity.dynamic.acceptAgentStep",
+				"key": "alt+enter",
+				"mac": "alt+enter",
+				"when": "!editorTextFocus && antigravity.stepPending"
+			},
+			{
+				"command": "antigravity.dynamic.rejectAgentStep",
+				"key": "alt+shift+enter",
+				"mac": "alt+shift+enter",
+				"when": "!editorTextFocus && antigravity.stepPending"
+			},
+			{
+				"command": "antigravity.inlineDiff.acceptFocusedHunk",
+				"key": "alt+enter",
+				"mac": "alt+enter",
+				"when": "editorTextFocus && !editorReadonly && antigravity.hasActiveDiff && !findWidgetVisible"
+			},
+			{
+				"command": "antigravity.inlineDiff.rejectFocusedHunk",
+				"key": "alt+shift+enter",
+				"mac": "alt+shift+enter",
+				"when": "editorTextFocus && !editorReadonly && antigravity.hasActiveDiff && !findWidgetVisible"
+			},
+			{
+				"command": "antigravity.sideBySide.acceptAll",
+				"key": "alt+enter",
+				"mac": "alt+enter",
+				"when": "editorTextFocus && antigravity.sideBySideReviewPending && !antigravity.hasActiveDiff && !findWidgetVisible"
+			},
+			{
+				"command": "antigravity.sideBySide.rejectAll",
+				"key": "alt+shift+enter",
+				"mac": "alt+shift+enter",
+				"when": "editorTextFocus && antigravity.sideBySideReviewPending && !antigravity.hasActiveDiff && !findWidgetVisible"
+			},
+			{
+				"command": "antigravity.dynamic.interruptAgent",
+				"key": "escape",
+				"mac": "escape",
+				"when": "antigravity.agentRunning && focusedView == 'antigravity.panel'"
+			},
+			{
+				"command": "antigravity.dynamic.conversationView.findInConversation",
+				"key": "ctrl+f",
+				"mac": "cmd+f",
+				"when": "focusedView == 'antigravity.panel' || antigravity.chatFocused && !editorFocus && !terminalFocus && !listFocus && !inputFocus"
+			},
+			{
+				"command": "antigravity.inlineDiff.undo",
+				"key": "ctrl+z",
+				"mac": "cmd+z",
+				"when": "editorTextFocus && !editorReadonly && antigravity.inlineDiffCanUndo"
+			},
+			{
+				"command": "antigravity.inlineDiff.redo",
+				"key": "ctrl+y",
+				"mac": "cmd+shift+z",
+				"when": "editorTextFocus && !editorReadonly && antigravity.inlineDiffCanRedo"
+			},
+			{
+				"command": "antigravity.inlineDiff.redo",
+				"key": "ctrl+shift+z",
+				"when": "!isMac && editorTextFocus && !editorReadonly && antigravity.inlineDiffCanRedo"
+			}
+		],
+		"configuration": {
+			"title": "Antigravity",
+			"properties": {
+				"antigravity.serverPort": {
+					"type": "number",
+					"default": 0,
+					"description": "Port for the Antigravity background server (`agy --hub`). Leave at 0 (recommended) to allocate an ephemeral port automatically. Each VS Code window spawns its own `agy` server, so prefer setting a fixed port in Workspace Settings rather than User Settings; if the configured port is already in use by another window or process, Antigravity automatically falls back to an available ephemeral port."
+				},
+				"antigravity.serverStartupTimeoutMs": {
+					"type": "number",
+					"default": 60000,
+					"description": "Timeout in milliseconds to wait for the Antigravity backend language server to start up and pass health checks."
+				},
+				"antigravity.heartbeatIntervalMs": {
+					"type": "number",
+					"default": 15000,
+					"description": "Interval in milliseconds between post-startup /healthz liveness probes (minimum 1000; 4x slower when the Antigravity view is hidden or unfocused). After 3 consecutive missed probes the backend is restarted automatically. Set to 0 to disable heartbeat probing."
+				},
+				"antigravity.enableTelemetry": {
+					"type": "boolean",
+					"default": true,
+					"markdownDeprecationMessage": "Telemetry is now controlled by the **Enable Telemetry** switch in Antigravity Settings → Account ([open](command:antigravity.openTelemetrySettings)). This setting no longer has any effect beyond keeping extension usage metrics off if set to `false`."
+				},
+				"antigravity.enableInlineDiff": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enable inline diff decorations and CodeLenses. When disabled, falls back to opening changes in a side-by-side diff tab."
+				},
+				"antigravity.autoAcceptOnChat": {
+					"type": "boolean",
+					"default": true,
+					"description": "Auto-accept pending edits in background files when starting a new or queued chat turn (non-cumulative review: only the latest turn's diff is kept on re-edited files). When off, reviews accumulate across turns: all modified files stay open until you accept or reject them, later edits to the same file merge into one cumulative diff, and you are notified when reviews from earlier turns remain open."
+				},
+				"antigravity.autoOpenFiles": {
+					"type": "boolean",
+					"default": false,
+					"description": "Automatically open files in the editor when the agent proposes edits."
+				},
+				"antigravity.enableComments": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enable leaving comments for the agent in editors and Git diff views (via the gutter '+' button, editor context menu, or keybinding)."
+				},
+				"antigravity.caCertificates": {
+					"type": "string",
+					"scope": "machine",
+					"default": "",
+					"description": "Path to a PEM-encoded CA certificate file (for example, a corporate TLS inspection root CA) trusted by the Antigravity extension and language server alongside system root certificates."
+				},
+				"antigravity.releaseBaseUrl": {
+					"type": "string",
+					"default": "",
+					"scope": "application",
+					"description": "Base URL for CLI downloads (used for testing and internal overrides)."
+				},
+				"antigravity.serverArgs": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"default": [],
+					"description": "Additional command line arguments passed to the language server."
+				},
+				"antigravity.channel": {
+					"type": "string",
+					"default": "production",
+					"description": "The release channel for this extension build",
+					"deprecationMessage": "Internal channel setting"
+				}
+			}
+		},
+		"configurationDefaults": {
+			"terminal.integrated.commandsToSkipShell": [
+				"antigravity.insertTerminalSnippet",
+				"antigravity.insertTerminalOutput"
+			]
+		}
+	},
+	"buildInfo": {
+		"BUILD_CLIENT": "(SrcFS)",
+		"BUILD_CLIENT_MINT_STATUS": "1",
+		"BUILD_DEPOT_PATH": "//depot/google3",
+		"BUILD_DIRECTORY": "/google/src/cloud/buildrabbit-username/buildrabbit-client/google3",
+		"BUILD_USERNAME": "kokoro-dedicated",
+		"BUILD_BLAZE_RELEASE": "release blaze-2026.10.28-2 (mainline @1008462968)",
+		"BUILD_EMBED_LABEL": "antigravity_vscode_extension_1.12.0_RC00",
+		"BUILD_HOSTNAME": "ljbed8.prod.google.com",
+		"VERIFIABLE": "0",
+		"WORKSPACE_STATUS_COMMAND_ARGUMENT": "<precomputed>"
+	},
+	"__metadata": {
+		"installedTimestamp": 1794490728013,
+		"targetPlatform": "undefined",
+		"size": 17574454
+	}
+}
